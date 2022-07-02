@@ -47,22 +47,38 @@ const arrow = document.getElementById('arrow')
 
 
 
-arrow.addEventListener('click', filtetByFirstName)
+arrow.addEventListener('click', filterByFirstName)
 
 
-function filtetByFirstName(){
-      const sortData = dataSet.sort(function(name1, name2) {
+function filterByFirstName(){
+    const sortData = dataSet.sort(function(name1, name2) {
     const nameA = name1.first_name
     const nameB = name2.first_name
-        if (nameA < nameB) {
+    if (nameA < nameB) {
         return -1;
-  }
-        if (nameA > nameB) {
+    }
+    if (nameA > nameB) {
         return 1;
-  }
+    }
         return 0
     })
     loadTable(sortData)
 
 }
+const accountOpened = document.getElementById('open')
 
+accountOpened.addEventListener('click', filterByAccountOpen)
+function filterByAccountOpen(){
+    const sortDataByDateOpened = dataSet.sort(function(name1, name2) {
+    const nameA = name1.account_opened_at
+    const nameB = name2.account_opened_at
+    if (nameA < nameB) {
+        return -1;
+    }
+    if (nameA > nameB) {
+        return 1;
+    }
+        return 0
+    })
+    loadTable(sortDataByDateOpened)
+}
