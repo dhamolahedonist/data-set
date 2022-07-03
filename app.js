@@ -42,15 +42,13 @@ function loadTable(dataSet){
     tableData.innerHTML = dataHtml;
 
 }
+const descendingElement = document.getElementById('descending')
+const ascendingElement = document.getElementById('ascending')
 
-const arrow = document.getElementById('arrow')
-
-
-
-arrow.addEventListener('click', filterByFirstName)
-
-
-function filterByFirstName(){
+ascendingElement.addEventListener('click', function() {
+    descendingElement.classList.remove('d-none')
+    ascendingElement.classList.add('d-none')
+   
     const sortData = dataSet.sort(function(name1, name2) {
     const nameA = name1.first_name
     const nameB = name2.first_name
@@ -64,7 +62,8 @@ function filterByFirstName(){
     })
     loadTable(sortData)
 
-}
+})
+
 const accountOpened = document.getElementById('open')
 
 accountOpened.addEventListener('click', filterByAccountOpen)
