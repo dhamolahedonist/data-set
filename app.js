@@ -55,29 +55,56 @@ ascendingElement.addEventListener('click', function() {
     if (nameA < nameB) {
         return -1;
     }
-    if (nameA > nameB) {
-        return 1;
-    }
         return 0
     })
     loadTable(sortData)
 
 })
+descendingElement.addEventListener('click', function() {
+    descendingElement.classList.add('d-none')
+    ascendingElement.classList.remove('d-none')
+   
+    const sortData = dataSet.sort(function(name1, name2) {
+    const nameA = name1.first_name
+    const nameB = name2.first_name
+    if (nameA > nameB) {
+        return -1;
+    }
+        return 0
+    })
+    loadTable(sortData)
+})
 
-const accountOpened = document.getElementById('open')
 
-accountOpened.addEventListener('click', filterByAccountOpen)
-function filterByAccountOpen(){
+const sortDateByAscendingElement = document.getElementById('ascend');
+const sortDateByDescendingElement = document.getElementById('descend');
+
+sortDateByAscendingElement.addEventListener('click', function() {
+    sortDateByAscendingElement.classList.add('d-none')
+    sortDateByDescendingElement.classList.remove('d-none')
+
     const sortDataByDateOpened = dataSet.sort(function(name1, name2) {
     const nameA = name1.account_opened_at
     const nameB = name2.account_opened_at
     if (nameA < nameB) {
         return -1;
     }
-    if (nameA > nameB) {
-        return 1;
-    }
         return 0
     })
     loadTable(sortDataByDateOpened)
-}
+})
+
+sortDateByDescendingElement.addEventListener('click', function() {
+    sortDateByDescendingElement.classList.add('d-none')
+    sortDateByAscendingElement.classList.remove('d-none')
+
+    const sortDataByDateOpened = dataSet.sort(function(name1, name2) {
+        const nameA = name1.account_opened_at
+        const nameB = name2.account_opened_at
+        if(nameA > nameB){
+            return -1;
+        }
+        return 0
+    })
+    loadTable(sortDataByDateOpened)
+})
